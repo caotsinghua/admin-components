@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 // import { linkTo } from '@storybook/addon-links';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 
-import Basic from './MineCrudBasic.vue';
+import crudOverview from './overview.vue';
 import overview from './overview.md';
 import usage from './usage.md';
 import SlotAppendRowActions from './slot-append-row-actions.vue';
@@ -23,7 +23,7 @@ storiesOf('MineCrud', module)
     })
     .add('总览', () => ({
         components: {
-            Basic
+            crudOverview
         },
         props: {
             hasRowDelBtn: {
@@ -42,7 +42,7 @@ storiesOf('MineCrud', module)
                 default: boolean('hasExportCsvBtn', true)
             }
         },
-        template: `<Basic
+        template: `<crudOverview
         :hasRowDelBtn="hasRowDelBtn"
         :hasRowEditBtn="hasRowEditBtn"
         :hasBatchDelBtn="hasBatchDelBtn"

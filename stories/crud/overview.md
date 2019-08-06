@@ -3,15 +3,22 @@
 > CRUD 组件允许你通过传入一些 props 和 events 直接生成增删改查逻辑，需要一些额外的功能也可以通过 slot 插入自己的内容。大部分 prop 与 iview 一致，只是放置的地方有区别。
 
 <!-- STORY -->
+
 ### 代码
+
 ```js
 <template>
-    <mine-crud
+    <crud
         :data="sharedState.data"
         :columns="columns"
         :formColumns="formColumns"
         :formData="formData"
         :rules="rules"
+        :hasRowDelBtn="hasRowDelBtn"
+        :hasRowEditBtn="hasRowEditBtn"
+        :hasAddBtn="hasAddBtn"
+        :hasBatchDelBtn="hasBatchDelBtn"
+        :hasExportCsvBtn="hasExportCsvBtn"
         :onUpdateForm="handleUpdateForm"
         :onCreateForm="handleCreateForm"
         :onDeleteRow="handleDeleteRow"
@@ -20,16 +27,18 @@
         @on-selection-change="handleSelectionChange"
         @on-change="handlePageChange"
         @on-page-size-change="handlePageSizeChange"
-    ></mine-crud>
+    ></crud>
 </template>
 
 <script>
-import MineCrud from '../../src/components/mine-crud';
+import crud from '../../components/crud';
 import store, { types } from './store';
+
 export default {
     components: {
-        MineCrud
+        crud
     },
+    props: ['hasRowDelBtn', 'hasRowEditBtn', 'hasBatchDelBtn', 'hasAddBtn', 'hasExportCsvBtn'],
     data() {
         return {
             sharedState: store.state,
@@ -195,5 +204,4 @@ export default {
     }
 };
 </script>
-
 ```
